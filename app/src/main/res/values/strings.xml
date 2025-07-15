@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+
+    <string name="app_dichvu">Dịch vụ</string>
+    <string name="app_linhkien">Linh kiện</string>
+    <string name="app_hoadon">Hóa đơn</string>
+    <string name="app_thongketongquat">Thống kê tổng quát</string>
+    <string name="app_thongkechitiet">Thống kê chi tiết</string>
+    <string name="app_taikhoan">Tài khoản</string>
+    <string name="app_doimatkhau">Đổi mật khẩu</string>
+
+    <string name="nav_drawer_open">Open nav drawer</string>
+    <string name="nav_drawer_close">Close nav drawer</string>"
+
+</resources>
