@@ -1,0 +1,27 @@
+package com.example.myapplication.database;
+
+import android.content.Context;
+
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
+
+import com.example.myapplication.Dichvu;
+
+@Database(entities = {Dichvu.class}, version = 1)
+public abstract class DichvuDatabase extends RoomDatabase {
+
+    private static final String DATABASE_NAME = "dichvu.db";
+    private static DichvuDatabase instance;
+
+
+    public static synchronized DichvuDatabase getInstance(Context context) {
+        if (instance == null) {
+            instance = Room.databaseBuilder(context.getApplicationContext(), DichvuDatabase.class, DATABASE_NAME
+            ).allowMainThreadQueries().build();
+        }
+        return instance;
+    }
+
+    public abstract DichvuDAO dichvuDAO();
+}

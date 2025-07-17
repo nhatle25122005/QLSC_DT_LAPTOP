@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_dichvu"
+            android:title="@string/app_dichvu"
+            android:icon="@drawable/ic_list" />
+
+        <item
+            android:id="@+id/nav_linhkien"
+            android:title="@string/app_linhkien"
+            android:icon="@drawable/ic_linhkien" />
+
+        <item
+            android:id="@+id/nav_hoadon"
+            android:title="@string/app_hoadon"
+            android:icon="@drawable/ic_thongke" />
+
+        <item
+            android:id="@+id/nav_thongketongquat"
+            android:title="@string/app_thongketongquat"
+            android:icon="@drawable/ic_thongke" />
+
+        <item
+            android:id="@+id/nav_thongkechitiet"
+            android:title="@string/app_thongkechitiet"
+            android:icon="@drawable/ic_thongke" />
+    </group>
+
+    <item android:title="@string/app_taikhoan">
+        <menu>
+            <item
+                android:id="@+id/nav_taikhoan"
+                android:title="@string/app_taikhoan"
+                android:icon="@drawable/ic_person" />
+
+            <item
+                android:id="@+id/nav_doimatkhau"
+                android:title="@string/app_doimatkhau"
+                android:icon="@drawable/ic_lock" />
+        </menu>
+    </item>
+</menu>

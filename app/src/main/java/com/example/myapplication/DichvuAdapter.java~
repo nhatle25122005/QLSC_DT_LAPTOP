@@ -1,0 +1,117 @@
+package com.example.myapplication;
+
+import android.app.AlertDialog;
+import android.content.Context;
+import android.graphics.Color;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myapplication.database.DichvuDAO;
+import com.example.myapplication.database.MyDatabase;
+
+import java.util.List;
+
+public class DichvuAdapter extends RecyclerView.Adapter<DichvuAdapter.DichvuViewHolder> {
+
+    private Context context;
+    private List<Dichvu> listDichvu;
+    private DichvuDAO dichvuDAO;
+
+    public DichvuAdapter(Context context, List<Dichvu> listDichvu) {
+        this.context = context;
+        this.listDichvu = listDichvu;
+        this.dichvuDAO = MyDatabase.getInstance(context).dichvuDAO();
+    }
+
+    @NonNull
+    @Override
+    public DichvuViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_dichvu, parent, false);
+        return new DichvuViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull DichvuViewHolder holder, int position) {
+        Dichvu dichvu = listDichvu.get(position);
+
+        holder.tvMaPhieu.setText("Mã phiếu: " + dichvu.getMaPhieu());
+        holder.tvTenSanPham.setText("Sản phẩm: " + dichvu.getTenSanPham());
+        holder.tvYeuCau.setText("Yêu cầu: " + dichvu.getYeuCau());
+        holder.tvThanhTien.setText("Thành tiền: " + dichvu.getThanhTien());
+        holder.tvNgayTao.setText("Ngày tạo: " + dichvu.getNgayTao());
+        holder.tvTinhTrang.setText("Tình trạng: " + dichvu.getTinhTrang());
+        holder.tvGhiChu.setText("Ghi chú: " + dichvu.getGhiChu());
+
+        // Đổi màu trạng thái
+        String tinhTrang = dichvu.getTinhTrang();
+        if (tinhTrang != null) {
+            switch (tinhTrang.toLowerCase()) {
+                case "chờ xử lý":
+                    holder.statusColor.setBackgroundColor(Color.RED);
+                    break;
+                case "đang xử lý":
+                    holder.statusColor.setBackgroundColor(Color.YELLOW);
+                    break;
+                case "hoàn thành":
+                    holder.statusColor.setBackgroundColor(Color.GREEN);
+                    break;
+                default:
+                    holder.statusColor.setBackgroundColor(Color.GRAY);
+                    break;
+            }
+        } else {
+            holder.statusColor.setBackgroundColor(Color.GRAY);
+        }
+
+        // Nút delete
+        holder.btnDelete.setOnClickListener(v -> {
+            new AlertDialog.Builder(context)
+                    .setTitle("Xác nhận xoá")
+                    .setMessage("Bạn có chắc chắn muốn xoá yêu cầu này?")
+                    .setPositiveButton("Xoá", (dialog, which) -> {
+                        // Xoá trong DB
+                        dichvuDAO.deleteDichvuByMaPhieu(dichvu.getMaPhieu());
+                        // Xoá trong danh sách
+                        listDichvu.remove(holder.getAdapterPosition());
+                        notifyItemRemoved(holder.getAdapterPosition());
+                        Toast.makeText(context, "Đã xoá", Toast.LENGTH_SHORT).show();
+                    })
+                    .setNegativeButton("Huỷ", null)
+                    .show();
+        });
+
+        // Bạn có thể thêm xử lý cho btnEdit nếu cần
+    }
+
+    @Override
+    public int getItemCount() {
+        return listDichvu != null ? listDichvu.size() : 0;
+    }
+
+    public static class DichvuViewHolder extends RecyclerView.ViewHolder {
+        TextView tvMaPhieu, tvTenSanPham, tvYeuCau, tvThanhTien, tvNgayTao, tvTinhTrang, tvGhiChu;
+        View statusColor;
+        ImageButton btnDelete;
+
+        public DichvuViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tvMaPhieu = itemView.findViewById(R.id.tvMaPhieu);
+            tvTenSanPham = itemView.findViewById(R.id.tvTenSanPham);
+            tvYeuCau = itemView.findViewById(R.id.tvYeuCau);
+            tvThanhTien = itemView.findViewById(R.id.tvThanhTien);
+            tvNgayTao = itemView.findViewById(R.id.tvNgayTao);
+            tvTinhTrang = itemView.findViewById(R.id.tvTinhTrang);
+            tvGhiChu = itemView.findViewById(R.id.tvGhiChu);
+            statusColor = itemView.findViewById(R.id.status_color);
+            btnDelete = itemView.findViewById(R.id.btnDeleteDichvu);
+        }
+    }
+}
