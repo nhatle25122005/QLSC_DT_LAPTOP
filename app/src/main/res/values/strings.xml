@@ -12,5 +12,16 @@
 
     <string name="nav_drawer_open">Open nav drawer</string>
     <string name="nav_drawer_close">Close nav drawer</string>"
+    <string-array name="tinh_trang_array">
+        <item>Đã sửa xong</item>
+        <item>Đang xử lý</item>
+    </string-array>
+    <string-array name="Nhanvien_sua_array">
+        <item>Nguyễn Thanh Toàn</item>
+        <item>Đặng Hoàng Phúc</item>
+        <item>Lê Minh Nhật</item>
+        <item>Trần Duy Bảo</item>
+        <item>Nguyễn Thành Đạt</item>
+    </string-array>
 
 </resources>
