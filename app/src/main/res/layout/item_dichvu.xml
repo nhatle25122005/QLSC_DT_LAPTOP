@@ -8,20 +8,21 @@
     app:cardElevation="4dp"
     app:cardBackgroundColor="@android:color/white">
 
-    <!-- Hàng ngang để thêm thanh trạng thái màu sắc -->
+    <!-- Layout chính: có cột màu và nội dung -->
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- Cột màu trạng thái -->
+        <!-- View trạng thái màu -->
         <View
             android:id="@+id/status_color"
             android:layout_width="8dp"
             android:layout_height="match_parent"
-            android:background="#FF9800" />
+            android:layout_marginEnd="8dp"
+            android:background="#CCCCCC" />
 
-        <!-- Nội dung -->
+        <!-- Nội dung chi tiết -->
         <LinearLayout
             android:orientation="vertical"
             android:padding="12dp"
@@ -36,9 +37,7 @@
                 android:text="Mã phiếu: DVHBT0137"
                 android:textStyle="bold"
                 android:textColor="#333333"
-                android:textSize="16sp"/>
-
-
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tvTenSanPham"
@@ -46,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:text="Sản phẩm: Nokia Lumia 540"
                 android:textColor="#666666"
-                android:layout_marginTop="2dp"/>
+                android:layout_marginTop="2dp" />
 
             <TextView
                 android:id="@+id/tvYeuCau"
@@ -54,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:text="Yêu cầu: Thay chân sạc"
                 android:textColor="#666666"
-                android:layout_marginTop="2dp"/>
+                android:layout_marginTop="2dp" />
 
             <TextView
                 android:id="@+id/tvThanhTien"
@@ -62,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:text="Thành tiền: 150.000"
                 android:textColor="#666666"
-                android:layout_marginTop="2dp"/>
+                android:layout_marginTop="2dp" />
 
             <TextView
                 android:id="@+id/tvNgayTao"
@@ -70,37 +69,50 @@
                 android:layout_height="wrap_content"
                 android:text="Ngày tạo: 13/07/2025"
                 android:textColor="#666666"
-                android:layout_marginTop="2dp"/>
+                android:layout_marginTop="2dp" />
+
             <TextView
                 android:id="@+id/tvTinhTrang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tình trạng: Chờ xử lý"
-                android:textColor="#666666" />
+                android:textColor="#666666"
+                android:layout_marginTop="2dp" />
 
-            <!-- Tình trạng + nút Edit nằm ngang -->
+            <!-- Ghi chú và nút edit + delete nằm ngang -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="2dp">
+                android:layout_marginTop="2dp"
+                android:gravity="center_vertical">
+
                 <TextView
                     android:id="@+id/tvGhiChu"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Ghi chú:Không"
+                    android:text="Ghi chú: Không"
                     android:textColor="#666666" />
 
-
                 <ImageButton
-                    android:id="@+id/btnEditTinhTrang"
+                    android:id="@+id/btnEdit"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_edit"
                     android:contentDescription="Chỉnh sửa tình trạng"
-                    android:tint="#000000"/>
+                    android:tint="#000000"
+                    android:layout_marginEnd="4dp" />
+
+                <ImageButton
+                    android:id="@+id/btnDelete"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_delete"
+                    android:contentDescription="Xóa yêu cầu"
+                    android:tint="#FF0000" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
