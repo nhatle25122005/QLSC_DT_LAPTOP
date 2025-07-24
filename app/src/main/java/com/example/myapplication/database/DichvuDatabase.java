@@ -14,14 +14,15 @@ public abstract class DichvuDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "dichvu.db";
     private static DichvuDatabase instance;
 
-
     public static synchronized DichvuDatabase getInstance(Context context) {
         if (instance == null) {
-            instance = Room.databaseBuilder(context.getApplicationContext(), DichvuDatabase.class, DATABASE_NAME
-            ).allowMainThreadQueries().build();
+            instance = Room.databaseBuilder(context.getApplicationContext(),
+                            DichvuDatabase.class, DATABASE_NAME)
+                    .allowMainThreadQueries()
+                    .build();
         }
         return instance;
     }
 
-    public abstract DichvuDAO dichvuDAO();
+    public abstract DichvuDAO dichvuDAO(); // KHỚP với interface duy nhất
 }

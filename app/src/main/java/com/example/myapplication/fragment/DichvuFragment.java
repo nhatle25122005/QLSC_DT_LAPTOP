@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,7 +26,8 @@ import java.util.List;
 
 public class DichvuFragment extends Fragment {
 
-    private EditText editMaphieu, editTensanpham, editYeucau, editThanhtien, editNgaytao, editTinhtrang, editGhichu;
+    private EditText editMaphieu, editTensanpham, editYeucau, editThanhtien, editNgaytao, editGhichu;
+    private Spinner spinnerTinhtrang;
     private Button btnAddyeucau;
     private RecyclerView rcvPhieutiepNhan;
 
@@ -38,7 +41,7 @@ public class DichvuFragment extends Fragment {
         editYeucau = view.findViewById(R.id.editYeucau);
         editThanhtien = view.findViewById(R.id.editThanhtien);
         editNgaytao = view.findViewById(R.id.editNgaytao);
-        editTinhtrang = view.findViewById(R.id.editTinhtrang);
+        spinnerTinhtrang = view.findViewById(R.id.spinnerTinhtrang); // dùng Spinner thay vì EditText
         editGhichu = view.findViewById(R.id.editGhichu);
         btnAddyeucau = view.findViewById(R.id.btnAddyeucau);
         rcvPhieutiepNhan = view.findViewById(R.id.rcvPhieutiepNhan);
@@ -55,6 +58,12 @@ public class DichvuFragment extends Fragment {
         // Khởi tạo Room DAO
         dichvuDAO = DichvuDatabase.getInstance(getContext()).dichvuDAO();
 
+        // Setup Spinner
+        String[] trangThaiOptions = {"Chờ xử lý", "Đang xử lý", "Hoàn thành"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, trangThaiOptions);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerTinhtrang.setAdapter(adapter);
+
         // Lấy danh sách từ DB
         listDichvu = new ArrayList<>(dichvuDAO.getListDichvu());
 
@@ -70,7 +79,7 @@ public class DichvuFragment extends Fragment {
             String yeuCau = editYeucau.getText().toString();
             int thanhTien = Integer.parseInt(editThanhtien.getText().toString());
             String ngayTao = editNgaytao.getText().toString();
-            String tinhTrang = editTinhtrang.getText().toString();
+            String tinhTrang = spinnerTinhtrang.getSelectedItem().toString(); // lấy từ Spinner
             String ghiChu = editGhichu.getText().toString();
 
             Dichvu dichvu = new Dichvu(maPhieu, tenSanPham, yeuCau, thanhTien, ngayTao, tinhTrang, ghiChu);
@@ -81,8 +90,6 @@ public class DichvuFragment extends Fragment {
             listDichvu.addAll(dichvuDAO.getListDichvu());
             dichvuAdapter.notifyDataSetChanged();
         });
-
-
 
         return view;
     }
