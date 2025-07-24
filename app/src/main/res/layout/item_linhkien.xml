@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    card_view:cardCornerRadius="8dp"
+    card_view:cardElevation="4dp">
+
+    <!-- Layout hiển thị thông tin linh kiện -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- Tên linh kiện -->
+        <TextView
+            android:id="@+id/tvTenLinhkien"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên linh kiện"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@android:color/black" />
+
+        <!-- Giá linh kiện -->
+        <TextView
+            android:id="@+id/tvGiaLinhkien"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giá: 0đ"
+            android:textSize="16sp"
+            android:textColor="@android:color/holo_green_dark" />
+
+        <!-- Số lượng linh kiện -->
+        <TextView
+            android:id="@+id/tvSoluongLinhkien"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Số lượng: 0"
+            android:textSize="16sp"
+            android:textColor="@android:color/black" />
+
+        <!-- Mô tả linh kiện -->
+        <TextView
+            android:id="@+id/tvMotaLinhkien"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mô tả linh kiện"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView> 

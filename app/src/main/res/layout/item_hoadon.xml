@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="#f5f5f5"
+    android:layout_marginBottom="8dp">
+
+    <TextView
+        android:id="@+id/tvNgayLap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ngày lập:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvTongTien"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tổng tiền:" />
+
+    <TextView
+        android:id="@+id/tvMaKhach"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mã khách:" />
+
+    <TextView
+        android:id="@+id/tvMaNhanVien"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mã nhân viên:" />
+
+    <TextView
+        android:id="@+id/tvGhiChu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ghi chú:" />
+
+</LinearLayout>

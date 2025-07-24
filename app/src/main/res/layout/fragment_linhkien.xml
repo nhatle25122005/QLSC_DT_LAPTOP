@@ -6,5 +6,100 @@
     android:padding="20dp"
     android:background="#662C2C">
 
+    <!-- EditText nhập tên linh kiện -->
+    <EditText
+        android:id="@+id/edtTenLinhkien"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tên linh kiện"
+        android:background="@drawable/bg_search_edittext"
+        android:padding="10dp"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="8dp" />
+
+    <!-- EditText nhập giá linh kiện -->
+    <EditText
+        android:id="@+id/edtGiaLinhkien"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Giá linh kiện"
+        android:inputType="numberDecimal"
+        android:background="@drawable/bg_search_edittext"
+        android:padding="10dp"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="8dp" />
+
+    <!-- EditText nhập số lượng linh kiện -->
+    <EditText
+        android:id="@+id/edtSoluongLinhkien"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Số lượng"
+        android:inputType="number"
+        android:background="@drawable/bg_search_edittext"
+        android:padding="10dp"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="8dp" />
+
+    <!-- EditText nhập mô tả linh kiện -->
+    <EditText
+        android:id="@+id/edtMotaLinhkien"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mô tả"
+        android:background="@drawable/bg_search_edittext"
+        android:padding="10dp"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Nhóm nút chức năng CRUD -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="16dp">
+
+        <!-- Nút Thêm -->
+        <Button
+            android:id="@+id/btnThemLinhkien"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Thêm"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:textColor="@android:color/white" />
+
+        <!-- Nút Sửa -->
+        <Button
+            android:id="@+id/btnSuaLinhkien"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sửa"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:textColor="@android:color/white"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" />
+
+        <!-- Nút Xóa -->
+        <Button
+            android:id="@+id/btnXoaLinhkien"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Xóa"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <!-- RecyclerView hiển thị danh sách linh kiện -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvLinhkien"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFF"
+        android:padding="4dp" />
 
 </LinearLayout>
